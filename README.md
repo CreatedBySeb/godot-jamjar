@@ -50,6 +50,7 @@ you want to collaborate on your project or back it up remotely.*
 
 ## Project Structure
 
+- `build/web/` - Where the default Web export will be placed, see [Project Defaults](#project-defaults)
 - `demo/` - A small Asteroids sample, see [Demo Project](#demo-project)
 - `systems/` - The common game systems the template includes for you out-of-box
 - `default_bus_layout.tres` - The template's audio bus layout, see [`AudioSystem`](#audiosystem)
@@ -69,6 +70,8 @@ jamming/prototyping experience.
     improvements in Godot, so this helps you take advantage of this
   - Unsafe Access: These helps avoid assuming a node will be a type other than what it is guaranteed
     to be, which can lead to difficult to find bugs
+- A Web export preset configured to build to `build/web/index.html`, so that the `web` directory is
+  ready to be zipped and uploaded to a site like Itch.io or used by GitHub Actions
 
 ## Provided Systems
 
