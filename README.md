@@ -83,7 +83,7 @@ template to enable you to spend more time on your unique logic. Any system marke
 
 **\[Autoload]**
 
-This is a simple autoload which provides some convenience methods for working with continuous sounds
+This is a simple system which provides some convenience methods for working with continuous sounds
 and for adding pitch variation to sounds (which helps make them less repetitive).
 
 It uses one `AudioStreamPlayer` node for the BGM (though it can be easily adapted to add more),
@@ -93,6 +93,16 @@ be used with the convenience methods.
 
 During development, an error will be raised if an `AudioStreamPlayer` in the `AudioSystem` has an
 incorrect bus, which could lead to incorrect mixing.
+
+### `SaveSystem`
+
+**\[Autoload]**
+
+This is a simple system which provides some cross-platform methods for reading and persisting data,
+such as for configuring settings, saving high scores and recording progress. By default it treats
+unexpected data as if there was nothing there and overwrites it, but you may want to replace this
+logic if you update the save format in the future. It currently doesn't support native objects (e.g.
+resources), but could be modified to do so.
 
 ## Demo Project
 
@@ -115,9 +125,10 @@ subject to other licenses from their original creators.
 
 - `demo/bgm.ogg`: ['Background space track'](https://opengameart.org/content/background-space-track)
   by yd, licensed under CC0
-- `demo/laser.png`, `demo/ship.png`: ['Simple Space'](https://kenney.nl/assets/simple-space) by
-  Kenney, licensed under CC0
-- `demo/laser.ogg`, `demo/thruster.ogg`: ['Sci-fi Sounds'](https://kenney.nl/assets/sci-fi-sounds)
+- `demo/asteroid.png`, `demo/laser.png`, `demo/ship.png`: ['Simple Space'](https://kenney.nl/assets/simple-space)
+  by Kenney, licensed under CC0
+- `demo/explosion.ogg`, `demo/laser.ogg`, `demo/thruster.ogg`: ['Sci-fi Sounds'](https://kenney.nl/assets/sci-fi-sounds)
   by Kenney, licensed under CC0
 
-All other files are original and licensed under the MIT License.
+Filenames don't necessarily match with their sources. All other files are original and licensed
+under the MIT License.
