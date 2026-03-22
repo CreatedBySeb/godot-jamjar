@@ -144,6 +144,8 @@ Below is a list of affected systems:
 Most of this template is provided under the MIT License, though some of the included assets are
 subject to other licenses from their original creators.
 
+- `logo.svg`: [Godot Logo](https://godotengine.org/press/) by Andrea Calabró, licensed under CC-BY
+  4.0
 - `demo/bgm.ogg`: ['Background space track'](https://opengameart.org/content/background-space-track)
   by yd, licensed under CC0
 - `demo/asteroid.png`, `demo/laser.png`, `demo/ship.png`: ['Simple Space'](https://kenney.nl/assets/simple-space)
