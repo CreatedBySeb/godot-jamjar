@@ -6,6 +6,8 @@ const WRONG_BUS_ERR: String = "AudioStreamPlayer '%s' has wrong bus '%s', expect
 ## AudioStreamPlayer node responsible for background music
 @onready var bgm: AudioStreamPlayer = $BGM
 
+## Whether sounds are currently muted
+var muted: bool = false
 ## Dictionary of AudioStreamPlayer nodes for different sound effects, auto-initialised on start as
 ## the children of the SFX node
 var sfx: Dictionary[String, AudioStreamPlayer] = {}
@@ -28,8 +30,23 @@ func _ready() -> void:
 		sfx[player.name] = player
 
 
+## Controls whether sound should be muted. When muted, audio will be muted, the background music
+## will be stopped, and sound effects will not play (to save CPU resources). Un-muting will re-start
+## the background music.
+func mute(enable: bool) -> void:
+	AudioServer.set_bus_mute(0, enable)
+
+	if enable:
+		bgm.stop()
+	else:
+		bgm.play()
+
+
 ## Plays a sound continuously, only starting it if it wasn't playing already
 func play_continuous(effect: String) -> void:
+	if muted:
+		return
+
 	var player: AudioStreamPlayer = sfx.get(effect)
 
 	if not player.playing:
@@ -39,6 +56,9 @@ func play_continuous(effect: String) -> void:
 ## Play a sound effect with some variance in pitch (default ±0.2), returns a coroutine that yields
 ## when the sound effect finishes playing
 func play_with_variance(effect: String, variance: float = 0.2) -> void:
+	if muted:
+		return
+
 	var player: AudioStreamPlayer = sfx.get(effect)
 	assert(player, "Tried to play invalid sound '%s'" % effect)
 
@@ -49,6 +69,9 @@ func play_with_variance(effect: String, variance: float = 0.2) -> void:
 
 ## Stops a continuously playing sound, only calling 'stop' it if it was playing
 func stop_continuous(effect: String) -> void:
+	if muted:
+		return
+
 	var player: AudioStreamPlayer = sfx.get(effect)
 
 	if player.playing:

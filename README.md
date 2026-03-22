@@ -89,7 +89,8 @@ and for adding pitch variation to sounds (which helps make them less repetitive)
 It uses one `AudioStreamPlayer` node for the BGM (though it can be easily adapted to add more),
 which is exposed via the `bgm` property. For sound effects, any `AudioStreamPlayer` node that is a
 direct child of the `SFX` node will be auto-registered into its `sfx` dictionary property, and can
-be used with the convenience methods.
+be used with the convenience methods. There is also a `mute` method for globally enabling or
+disabling playback.
 
 During development, an error will be raised if an `AudioStreamPlayer` in the `AudioSystem` has an
 incorrect bus, which could lead to incorrect mixing.
