@@ -91,8 +91,8 @@ bottom right. It also has a space for credits at the bottom left.
 
 **\[Autoload]**
 
-This is a simple system which provides some convenience methods for working with continuous sounds
-and for adding pitch variation to sounds (which helps make them less repetitive).
+This system provides some convenience methods for working with continuous sounds and for adding
+pitch variation to sounds (which helps make them less repetitive).
 
 It uses one `AudioStreamPlayer` node for the BGM (though it can be easily adapted to add more),
 which is exposed via the `bgm` property. For sound effects, any `AudioStreamPlayer` node that is a
@@ -107,11 +107,22 @@ incorrect bus, which could lead to incorrect mixing.
 
 **\[Autoload]**
 
-This is a simple system which provides some cross-platform methods for reading and persisting data,
-such as for configuring settings, saving high scores and recording progress. By default it treats
-unexpected data as if there was nothing there and overwrites it, but you may want to replace this
-logic if you update the save format in the future. It currently doesn't support native objects (e.g.
-resources), but could be modified to do so.
+This system provides some cross-platform methods for reading and persisting data, such as for
+configuring settings, saving high scores and recording progress. By default it treats unexpected
+data as if there was nothing there and overwrites it, but you may want to replace this logic if you
+update the save format in the future. It currently doesn't support native objects (e.g. resources),
+but could be modified to do so.
+
+### `SceneSystem`
+
+**\[Autoload]**
+
+This system provides methods for loading resources (including scenes) in the background to avoid
+interrupting gameplay, and for transitioning to a new scene then performing actions afterwards. The
+main idea is that you can load in a new scene using `bg_load`, which will return a `PackedScene`,
+then you can instantiate this, do any configuration required and then call `transition` with it. You
+could also use `bg_load` for streaming in level chunks, enemies, assets or anything else you may
+need soon but don't want to block the main thread for.
 
 ## Demo Project
 

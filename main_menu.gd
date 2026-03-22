@@ -9,6 +9,8 @@ const UNMUTE_STRING = "Unmute Sound"
 
 @export_file("*.tscn") var game_scene: String
 
+var _game_scene: PackedScene
+
 @onready var help_pop_up: MarginContainer = $HelpPopUp
 @onready var muted: bool = SaveSystem.get_global("muted", false)
 @onready var mute_button: Button = %MuteButton
@@ -24,6 +26,15 @@ func _ready() -> void:
 	if muted:
 		AudioSystem.mute(muted)
 		mute_button.text = UNMUTE_STRING if muted else MUTE_STRING
+
+	# Pre-load the game scene in the background when the game is launched
+	var load_result := await SceneSystem.bg_load(game_scene)
+
+	if load_result.error == OK:
+		_game_scene = load_result.res
+	else:
+		push_error("Unable to load game scene, quitting")
+		get_tree().quit()
 
 
 ## Toggle the help text
@@ -42,7 +53,18 @@ func _on_mute() -> void:
 
 ## Transition to the main scene of the game
 func _on_play() -> void:
-	get_tree().change_scene_to_file(game_scene)
+	# Block until the game scene is ready (if loading fails the game will exit in the code above, so
+	# the infinite loop is safe here)
+	while _game_scene == null:
+		pass
+
+	var scene := _game_scene.instantiate()
+
+	# Fill in any additional setup you may want/need
+
+	await SceneSystem.transition(scene)
+
+	# Perform any post-load actions you may want/need
 
 
 ## Quit the game
