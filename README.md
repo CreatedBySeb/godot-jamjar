@@ -79,6 +79,14 @@ These are some common game systems that most games will need, so they have been 
 template to enable you to spend more time on your unique logic. Any system marked with
 **\[Autoload]** is provided as an autoload, so is always accessible as a singleton by its name.
 
+### `MainMenu`
+
+A basic main menu is provided in `main_menu.tscn` and set as the entrypoint for the project. It has
+a basic layout that is easy to tweak, built on top of a theme assigned to the root node. It has a
+play button, which loads the configured `game_scene`, a help button, which toggles a pop up with
+instructions, a quit button (on supported platforms), which quits the game, and a mute toggle at the
+bottom right. It also has a space for credits at the bottom left.
+
 ### `AudioSystem`
 
 **\[Autoload]**

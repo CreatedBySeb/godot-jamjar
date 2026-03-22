@@ -1,4 +1,5 @@
 extends Node
+## Simple access to reading and writing key-value pairs to persistent files
 
 ## The prefix/protocol used for persistent local data
 const DATA_PREFIX: String = "user://"
