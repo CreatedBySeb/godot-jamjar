@@ -8,10 +8,12 @@
 
 [node name="AudioSystem" type="Node" unique_id=455669328]
 script = ExtResource("1_b4rwa")
+bgm_tracks = Dictionary[String, AudioStream]({
+"demo": ExtResource("2_khn6y")
+})
+default_track = "demo"
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=608607434]
-stream = ExtResource("2_khn6y")
-autoplay = true
 bus = &"BGM"
 
 [node name="SFX" type="Node" parent="." unique_id=306181022]
