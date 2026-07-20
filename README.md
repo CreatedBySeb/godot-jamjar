@@ -139,6 +139,18 @@ Below is a list of affected systems:
 - `AudioSystem`: Contains a BGM track and sound effects. To clean up, delete all the nodes under
   SFX, then click the 'BGM' node and click the circular arrow next to 'Stream'
 
+## Asset Libraries
+
+This template uses some assets in the demo, listed below in the License section. If you are looking for more assets I would recommend the following sources, which are good sources of free and permissively-licensed assets (though not all assets have open licenses, so check before you use them!):
+- [Kenney.nl](https://kenney.nl/) - All kinds of different assets (sprites, models, sound, UI), these are the assets primarily used in the demo
+- [KayKit](https://kaylousberg.com/game-assets) - 3D models
+- [Quaternius](https://quaternius.com/) - 3D models and animations
+- [Incompetech](https://incompetech.com/) - Music
+- [Freesound](https://freesound.org/) - Sound effects and music
+- [Google Fonts](https://fonts.google.com) - Fonts
+- [OpenGameArt.org](https://opengameart.org/) - All kinds
+- [Poly Pizza](https://poly.pizza/) - 3D models
+
 ## License
 
 Most of this template is provided under the MIT License, though some of the included assets are
